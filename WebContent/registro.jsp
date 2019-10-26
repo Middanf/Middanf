@@ -55,7 +55,7 @@
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="id_nombre">Repeat Password</label>
-					<input class="form-control" placeholder="Repetir password" type="password">
+					<input name="txt_repeat_password" id="txt_repeat_password" class="form-control" placeholder="Repetir password" type="password">
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary" name="validateBtn" value="iniciar">Crea Alumno</button>

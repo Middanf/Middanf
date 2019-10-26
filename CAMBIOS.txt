@@ -1,0 +1,11 @@
+CAMBIOS:
+
+	- Se quitó las entidades sobrantes.
+	- Se quitó los Servlets sobrantes.
+	- Se agregó la validación de: repeat password
+	- En el script lms:
+		- se cambió la tabla ´user´ por tb_user
+		- se cambió el campo ´password´ por pass
+		(finalidad: evitar errores de versiones por sintaxis)
+	- Se cambió los métodos en ModelUser de acuerdo a los cambios hechos en la BD.
+	- Se agregó mensaje en java script para alerta por login o password incorrecto(nada del otro mundo haha).

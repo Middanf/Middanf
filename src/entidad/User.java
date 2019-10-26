@@ -2,9 +2,16 @@ package entidad;
 
 public class User {
 	
+	//Atributos
 	private int user_id, cellphone;
 	private String name_user, lastname, login, password, email;
 	private String created_at, update_at;
+	
+	//Constructor vacío
+	public User() {
+	}
+	
+	//Métodos Getters and Setters
 	public int getUser_id() {
 		return user_id;
 	}

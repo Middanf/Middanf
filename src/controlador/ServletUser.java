@@ -47,12 +47,13 @@ public class ServletUser extends HttpServlet {
     	
     	User u = new User();
     	
-    	String name_user, lastname, login, password, email, cellphone;
+    	String name_user, lastname, login, password, password_repeat, email, cellphone;
     	
     	name_user = request.getParameter("txt_user");
     	lastname = request.getParameter("txt_lastname");
     	login = request.getParameter("txt_login");
     	password = request.getParameter("txt_password");
+    	password_repeat = request.getParameter("txt_repeat_password");
     	email = request.getParameter("txt_email");
     	cellphone = request.getParameter("txt_cellphone");
     	
@@ -63,7 +64,13 @@ public class ServletUser extends HttpServlet {
     	u.setEmail(email);
     	u.setCellphone(Integer.parseInt(cellphone));
     	
-    	int estado = mu.registrarUser(u);
+    	int estado;
+    	
+    	if(password.equals(password_repeat)){
+    		estado = mu.registrarUser(u);
+    	}else{
+    		estado = -1;
+    	}
     	
     	if (estado!=-1) {
     		listar(request, response);

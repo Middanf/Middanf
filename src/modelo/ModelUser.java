@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
-import entidad.Empleado;
 import entidad.User;
 import utils.MysqlDBConexion;
 
@@ -22,7 +21,7 @@ public class ModelUser {
 		try {
 			
 			cn = MysqlDBConexion.getConexion();
-			String sql = "select user_id, name_user, lastname, login,´password´, email, cellphone  from ´user´";
+			String sql = "select user_id, name_user, lastname, login, pass, email, cellphone  from tb_user";
 			pstm = cn.prepareStatement(sql);
 			rs = pstm.executeQuery();
 			while(rs.next()) {
@@ -64,7 +63,7 @@ public class ModelUser {
 			try {
 				
 				cn = MysqlDBConexion.getConexion();
-				String sql = "insert into ´user´ values (null, ?, ?, ?, ?, ?, ?, ?, ?)";
+				String sql = "insert into tb_user values (null, ?, ?, ?, ?, ?, ?, ?, ?)";
 				pstm = cn.prepareStatement(sql);
 				pstm.setString(1, u.getName_user());
 				pstm.setString(2, u.getLastname());
@@ -107,7 +106,7 @@ public class ModelUser {
 		
 		try {
 			
-			String sql = "select * from ´user´ where login=? and ´password´=?";
+			String sql = "select * from tb_user where login=? and pass=?";
 			
 			cn = MysqlDBConexion.getConexion();
 			pstm = cn.prepareStatement(sql);
