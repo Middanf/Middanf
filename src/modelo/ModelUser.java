@@ -20,9 +20,8 @@ public class ModelUser {
 		PreparedStatement pstm = null;
 		
 		try {
-			
 			cn = MysqlDBConexion.getConexion();
-			String sql = "select user_id, name_user, lastname, login,´password´, email, cellphone  from ´user´";
+			String sql = "select user_id, name_user, lastname, login, password, email, cellphone, role_id from user";
 			pstm = cn.prepareStatement(sql);
 			rs = pstm.executeQuery();
 			while(rs.next()) {
@@ -34,6 +33,7 @@ public class ModelUser {
 				u.setPassword(rs.getString(5));
 				u.setEmail(rs.getString(6));
 				u.setCellphone(rs.getInt(7));
+				u.setRole_id(rs.getInt(8));
 				data.add(u);
 			}
 			
@@ -64,7 +64,7 @@ public class ModelUser {
 			try {
 				
 				cn = MysqlDBConexion.getConexion();
-				String sql = "insert into ´user´ values (null, ?, ?, ?, ?, ?, ?, ?, ?)";
+				String sql = "insert into user values (null, ?, ?, ?, ?, ?, ?, ?, ?)";
 				pstm = cn.prepareStatement(sql);
 				pstm.setString(1, u.getName_user());
 				pstm.setString(2, u.getLastname());
@@ -107,8 +107,7 @@ public class ModelUser {
 		
 		try {
 			
-			String sql = "select * from ´user´ where login=? and ´password´=?";
-			
+			String sql = "select login, password, role_id from user where login=? and password=?";
 			cn = MysqlDBConexion.getConexion();
 			pstm = cn.prepareStatement(sql);
 			pstm.setString(1, log);
@@ -119,8 +118,7 @@ public class ModelUser {
 				obj = new User();
 				obj.setUser_id(rs.getInt(1));
 				obj.setName_user(rs.getString(2));
-				obj.setLogin(rs.getString(3));
-				obj.setLogin(rs.getString(3));
+				obj.setRole_id(rs.getInt(3));
 			}
 			
 		} catch (Exception e) {
