@@ -24,6 +24,13 @@ $(document).ready(function() {
         		validators: {
         			notEmpty: {
         				message: 'El password es un campo obligatorio'
+        			}
+        		}
+        	}
+        	/* txtpass: {
+        		validators: {
+        			notEmpty: {
+        				message: 'El password es un campo obligatorio'
         			},
         			regexp: {
         				regexp: /^[a-z0-9]+$/,
@@ -35,7 +42,7 @@ $(document).ready(function() {
         				message: 'Rango de 3 a 16 dígitos'
         			}
         		}
-        	}
+        	} */
         }   
     });
 

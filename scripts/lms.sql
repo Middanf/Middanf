@@ -10,12 +10,12 @@ CREATE TABLE role (
 INSERT INTO role SET role_name = 'user';
 INSERT INTO role SET role_name = 'admin';
 
-CREATE TABLE user (
+CREATE TABLE tb_user (
 	user_id INT PRIMARY KEY auto_increment,
 	name_user VARCHAR(50) NOT NULL,
 	lastname VARCHAR(50) NOT NULL,
 	login VARCHAR(50) NOT NULL,
-	password VARCHAR(50) NOT NULL,
+	pass VARCHAR(50) NOT NULL,
 	email VARCHAR(50) NOT NULL UNIQUE,
 	cellphone INT(10),
 	role_id INT NOT NULL DEFAULT 1,
@@ -58,7 +58,7 @@ CREATE TABLE user_course (
 	user_id INT NOT NULL,
     course_id INT NOT NULL,
     suscription_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT user_course_user_fk FOREIGN KEY (user_id) REFERENCES user (user_id),
+    CONSTRAINT user_course_user_fk FOREIGN KEY (user_id) REFERENCES tb_user (user_id),
     CONSTRAINT user_course_course_fk FOREIGN KEY (course_id) REFERENCES course (course_id)
 );
 

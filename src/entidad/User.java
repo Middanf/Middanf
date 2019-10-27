@@ -2,9 +2,14 @@ package entidad;
 
 public class User {
 	
+	//Atributos
 	private int user_id, cellphone, role_id;
 	private String name_user, lastname, login, password, email;
 	private String created_at, update_at;
+  
+  //Constructor vacio
+	public User() {
+	}
 	
 	public int getRole_id() {
 		return role_id;
@@ -12,6 +17,7 @@ public class User {
 	public void setRole_id(int role_id) {
 		this.role_id = role_id;
 	}
+  
 	public int getUser_id() {
 		return user_id;
 	}

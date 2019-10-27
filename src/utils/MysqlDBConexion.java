@@ -10,6 +10,7 @@ public class MysqlDBConexion {
 			Class.forName("com.mysql.jdbc.Driver");
 			String connectionURL = "jdbc:mysql://localhost:3306/lms?"
 					+ "user=root&password=mysql";
+					//+ "user=root&password=";
 			cn=DriverManager.getConnection(connectionURL);
 		} catch (Exception e) {
 			e.printStackTrace();
