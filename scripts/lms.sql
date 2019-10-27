@@ -1,6 +1,14 @@
-CREATE DATABASE lms;
+CREATE DATABASE middanf;
 
-USE lms;
+USE middanf;
+
+CREATE TABLE role (
+	role_id INT PRIMARY KEY auto_increment,
+	role_name VARCHAR(20) NOT NULL UNIQUE
+);
+
+INSERT INTO role SET role_name = 'user';
+INSERT INTO role SET role_name = 'admin';
 
 CREATE TABLE tb_user (
 	user_id INT PRIMARY KEY auto_increment,
@@ -10,13 +18,26 @@ CREATE TABLE tb_user (
 	pass VARCHAR(50) NOT NULL,
 	email VARCHAR(50) NOT NULL UNIQUE,
 	cellphone INT(10),
+	role_id INT NOT NULL DEFAULT 1,
 	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+	updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT role_user_fk FOREIGN KEY (role_id) REFERENCES role (role_id)
 );
+
+INSERT INTO user SET 
+	name_user='David', 
+	lastname='Vargas', 
+	login='davos', 
+	password='domi123',
+	email='davidvargas.d45@gmail.com',
+	role_id=2;
+	
 
 CREATE TABLE category (
 	category_id INT PRIMARY KEY AUTO_INCREMENT,
-	category_name VARCHAR(50) UNIQUE NOT NULL
+	category_name VARCHAR(50) UNIQUE NOT NULL,
+	slug VARCHAR(15) NOT NULL,
+	description TEXT NOT NULL
 );
 
 CREATE TABLE quiz (

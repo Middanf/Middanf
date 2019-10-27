@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidad.User;
-import modelo.ModelEmpleado;
 import modelo.ModelUser;
 
 /**
@@ -37,12 +36,14 @@ public class ServletLogin extends HttpServlet {
     	
     	String login = request.getParameter("txtlogin");
     	String password = request.getParameter("txtpass");
-    	
     	User u = mu.iniciarSesion(login, password);
-    	
+
     	if(u == null){
     		request.setAttribute("msj", "Usuario o Clave incorrecto");
-    		request.getRequestDispatcher("registro.jsp").forward(request, response);
+    		request.getRequestDispatcher("admin.jsp").forward(request, response);
+    	} else if (u.getRole_id() == 2) {
+    		request.setAttribute("msj", "Bienvenido administrador: " + u.getName_user() + " !");
+    		request.getRequestDispatcher("admin.jsp").forward(request, response);
     	}
     	else{
     		String mensaje = "Bienvenido " + u.getName_user();
